@@ -1,0 +1,123 @@
+<html>
+<head>
+    <title>SKY CAST Weather Forecasting</title>
+    <style>
+        h2{
+          text-align:center;
+        }
+        body {
+            font-family: Arial;
+            background: #eef4ff;
+            padding: 20px;
+        }
+        .box {
+            max-width: 400px;
+            margin: auto;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #0002;
+        }
+        input{
+            width: 96%;
+            padding: 5px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        button {
+            background: royalblue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>SKY CAST</h2>
+
+    <input id="city" type="text" placeholder="Enter TN district (Example: Chennai)">
+    <button onclick="showWeather()">Check Weather</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+const weatherData = {
+    "ariyalur": { temp: 30, condition: "Sunny", humidity: 60 },
+    "chengalpattu": { temp: 31, condition: "Cloudy", humidity: 65 },
+    "chennai": { temp: 32, condition: "Sunny", humidity: 60 },
+    "coimbatore": { temp: 27, condition: "Cloudy", humidity: 70 },
+    "cuddalore": { temp: 30, condition: "Humid", humidity: 75 },
+    "dharmapuri": { temp: 29, condition: "Sunny", humidity: 55 },
+    "dindigul": { temp: 28, condition: "Cloudy", humidity: 68 },
+    "erode": { temp: 28, condition: "Sunny", humidity: 63 },
+    "kallakurichi": { temp: 29, condition: "Partly Cloudy", humidity: 62 },
+    "kancheepuram": { temp: 31, condition: "Sunny", humidity: 64 },
+    "kanyakumari": { temp: 29, condition: "Windy", humidity: 70 },
+    "karur": { temp: 30, condition: "Hot", humidity: 58 },
+    "krishnagiri": { temp: 27, condition: "Cloudy", humidity: 65 },
+    "madurai": { temp: 34, condition: "Hot", humidity: 55 },
+    "nagapattinam": { temp: 30, condition: "Humid", humidity: 78 },
+    "namakkal": { temp: 28, condition: "Sunny", humidity: 60 },
+    "nilgiris": { temp: 18, condition: "Cold", humidity: 80 },
+    "perambalur": { temp: 31, condition: "Sunny", humidity: 57 },
+    "pudukkottai": { temp: 30, condition: "Cloudy", humidity: 68 },
+    "ramanathapuram": { temp: 32, condition: "Humid", humidity: 73 },
+    "ranipet": { temp: 30, condition: "Sunny", humidity: 65 },
+    "salem": { temp: 29, condition: "Partly Cloudy", humidity: 65 },
+    "sivagangai": { temp: 31, condition: "Sunny", humidity: 62 },
+    "tenkasi": { temp: 28, condition: "Cloudy", humidity: 72 },
+    "thanjavur": { temp: 30, condition: "Cloudy", humidity: 68 },
+    "theni": { temp: 27, condition: "Cool", humidity: 70 },
+    "thoothukudi": { temp: 33, condition: "Hot", humidity: 72 },
+    "tiruchirappalli": { temp: 31, condition: "Sunny", humidity: 58 },
+    "tirunelveli": { temp: 33, condition: "Humid", humidity: 72 },
+    "tirupathur": { temp: 28, condition: "Cloudy", humidity: 66 },
+    "tiruppur": { temp: 29, condition: "Dry", humidity: 55 },
+    "tiruvallur": { temp: 31, condition: "Sunny", humidity: 63 },
+    "tiruvannamalai": { temp: 30, condition: "Sunny", humidity: 60 },
+    "tiruvarur": { temp: 29, condition: "Humid", humidity: 75 },
+    "vellore": { temp: 30, condition: "Sunny", humidity: 62 },
+    "viluppuram": { temp: 29, condition: "Partly Cloudy", humidity: 67 },
+    "virudhunagar": { temp: 32, condition: "Hot", humidity: 60 }
+};
+
+function showWeather() {
+    const city = document.getElementById("city").value.toLowerCase().trim();
+
+    if (city === "") {
+        document.getElementById("result").innerHTML = "<p>Please enter a district!</p>";
+        return;
+    }
+
+    if (!weatherData[city]) {
+        document.getElementById("result").innerHTML =
+            "<p>District not found. Please enter a valid Tamil Nadu district.</p>";
+        return;
+    }
+
+    const w = weatherData[city];
+
+    document.getElementById("result").innerHTML = `
+        <h3>${city.toUpperCase()}</h3>
+        <p><b>Temperature:</b> ${w.temp} °C</p>
+        <p><b>Condition:</b> ${w.condition}</p>
+        <p><b>Humidity:</b> ${w.humidity}%</p>
+    `;
+}
+</script>
+
+</body>
+</html>
